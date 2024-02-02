@@ -8,7 +8,7 @@ class LinkedinJobScraperSpider(scrapy.Spider):
     api_url = "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Data%2BScientist&location=Indonesia&geoId=102478259&trk=public_jobs_jobs-search-bar_search-submit&start="
 
     def start_requests(self):
-        first_job_on_page = 25
+        first_job_on_page = 0
         first_url = self.api_url + str(first_job_on_page)
         yield scrapy.Request(
             url=first_url,
@@ -48,7 +48,7 @@ class LinkedinJobScraperSpider(scrapy.Spider):
             )
 
         if num_jobs_returned > 0:
-            first_job_on_page = int(first_job_on_page) + num_jobs_returned
+            first_job_on_page = int(first_job_on_page) + 25
             next_url = self.api_url + str(first_job_on_page)
             print("**********************************************************")
             print("MASUK")
