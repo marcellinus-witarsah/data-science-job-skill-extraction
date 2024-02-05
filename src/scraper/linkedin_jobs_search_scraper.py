@@ -1,15 +1,19 @@
+"""
+Author: Marcellinus Aditya Witarsah
+Description: Used for scraping Linked In jobs search page.
+Command:
+python src/scraper/linkedin_jobs_search_scraper.py --job-title "Data Scientist" --job-location "United States" --n-jobs 25 --filepath data/raw/test.csv
+"""
+
 import time
 import pandas as pd
 import argparse
+import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-"""
-python src/scraper/linkedin_jobs_search_scraper.py --job-title "Data Scientist" --job-location "United States" --n-jobs 25 --filepath data/raw/test.csv
-"""
 
 
 def main():
@@ -114,7 +118,11 @@ def main():
             if job_description_element is None:
                 job_descriptions.append("Not Found")
             else:
-                job_descriptions.append(job_description_element.text.strip())
+                job_description = re.sub(
+                    "<[^>]+>", " ", str(job_description_element.text)
+                )
+                job_description = re.sub("[ ]+", " ", job_description)
+                job_descriptions.append(job_description)
 
             job_function = soup.select(
                 "ul.description__job-criteria-list > li:nth-child(3) > span"
