@@ -16,6 +16,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+def html_element_handler(element):
+    if len(element) == 0:
+        return "Not Found"
+    else:
+        return element[0].text.strip()
+
+
 def main():
     # input from command line
     parser = argparse.ArgumentParser(
@@ -100,48 +107,27 @@ def main():
             time.sleep(1)
 
             soup = BeautifulSoup(driver.page_source, "html.parser")
-            job_title_element = soup.find("h2", {"class": "top-card-layout__title"})
-            if job_title_element is None:
-                job_titles.append("Not Found")
-            else:
-                job_titles.append(job_title_element.text.strip())
 
-            job_post_element = soup.find("span", {"class": "posted-time-ago__text"})
-            if job_post_element is None:
-                job_posts.append("Not Found")
-            else:
-                job_posts.append(job_post_element.text.strip())
-
-            job_description_element = soup.find(
-                "div", {"class": "show-more-less-html__markup relative overflow-hidden"}
-            )
-            if job_description_element is None:
-                job_descriptions.append("Not Found")
-            else:
-                job_description = re.sub(
-                    "<[^>]+>", " ", str(job_description_element.text)
-                )
-                job_description = re.sub("[ ]+", " ", job_description)
-                job_descriptions.append(job_description)
-
-            job_function = soup.select(
+            # Get html elements
+            job_title_element = soup.select("h2.top-card-layout__title")
+            job_post_element = soup.select("span.posted-time-ago__text")
+            job_description_element = soup.select("div.show-more-less-html__markup")
+            job_function_element = soup.select(
                 "ul.description__job-criteria-list > li:nth-child(3) > span"
             )
-            if job_function is None:
-                job_functions.append("Not Found")
-            else:
-                job_functions.append(job_function[0].text.strip())
-
-            job_industry = soup.select(
+            job_industry_element = soup.select(
                 "ul.description__job-criteria-list > li:nth-child(4) > span"
             )
-            if job_industry is None:
-                job_industries.append("Not Found")
-            else:
-                job_industries.append(job_industry[0].text.strip())
-            print(
-                f"{i}: {job_title_element.text.strip()}, {job_post_element.text.strip()}, {job_description_element.text.strip()}, {job_function[0].text.strip()}, {job_industry[0].text.strip()}"
+            # Extract content and append to the list
+            job_titles.append(html_element_handler(job_title_element))
+            job_posts.append(html_element_handler(job_post_element))
+            job_functions.append(html_element_handler(job_function_element))
+            job_industries.append(html_element_handler(job_industry_element))
+            job_description = re.sub(
+                "<[^>]+>", " ", html_element_handler(job_description_element)
             )
+            job_description = re.sub("[ ]+", " ", job_description)
+            job_descriptions.append(job_description)
         except Exception as e:
             print(f"At iteration {i} with error of {e}")
 
