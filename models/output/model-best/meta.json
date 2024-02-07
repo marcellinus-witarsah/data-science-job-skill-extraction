@@ -1,0 +1,70 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.7.2,<3.8.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"a89eae928",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "tok2vec":[
+
+    ],
+    "ner":[
+      "KNOWLEDGE AND CONCEPTS",
+      "PROGRAMMING LANGUAGES",
+      "SOFTSKILLS",
+      "TOOLS AND TECHNOLOGIES"
+    ]
+  },
+  "pipeline":[
+    "tok2vec",
+    "ner"
+  ],
+  "components":[
+    "tok2vec",
+    "ner"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "ents_f":0.4516129032,
+    "ents_p":0.5384615385,
+    "ents_r":0.3888888889,
+    "ents_per_type":{
+      "KNOWLEDGE AND CONCEPTS":{
+        "p":0.4736842105,
+        "r":0.4285714286,
+        "f":0.45
+      },
+      "PROGRAMMING LANGUAGES":{
+        "p":1.0,
+        "r":0.6,
+        "f":0.75
+      },
+      "SOFTSKILLS":{
+        "p":0.5,
+        "r":0.2857142857,
+        "f":0.3636363636
+      },
+      "TOOLS AND TECHNOLOGIES":{
+        "p":0.0,
+        "r":0.0,
+        "f":0.0
+      }
+    },
+    "tok2vec_loss":49.1842143561,
+    "ner_loss":14.6975580667
+  }
+}
