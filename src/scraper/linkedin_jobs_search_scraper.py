@@ -123,11 +123,13 @@ def main():
             job_posts.append(html_element_handler(job_post_element))
             job_functions.append(html_element_handler(job_function_element))
             job_industries.append(html_element_handler(job_industry_element))
-            job_description = re.sub(
-                "<[^>]+>", " ", html_element_handler(job_description_element)
-            )
-            job_description = re.sub("[ ]+", " ", job_description)
-            job_descriptions.append(job_description)
+            # job_description = re.sub(
+            #     "<[^>]+>", " ", html_element_handler(job_description_element)
+            # )
+            # job_description = re.sub(
+            #     "[ ]+", " ", html_element_handler(job_description_element)
+            # )
+            job_descriptions.append(str(job_description_element[0]))
         except Exception as e:
             print(f"At iteration {i} with error of {e}")
 
