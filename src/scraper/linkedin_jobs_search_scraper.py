@@ -8,7 +8,7 @@ python src/scraper/linkedin_jobs_search_scraper.py --job-title "Data Scientist" 
 import time
 import pandas as pd
 import argparse
-import re
+import logging
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -24,7 +24,7 @@ def html_element_handler(element):
 
 
 def main():
-    # input from command line
+    # Input from CLI
     parser = argparse.ArgumentParser(
         prog="Linked In Jobs Search Scraper",
         description="Scrape Job Title, Job Description, and Job Posted at The Search Job Site",
@@ -46,6 +46,10 @@ def main():
     job_location = args.job_location
     n_jobs = args.n_jobs
     filepath = args.filepath
+
+    # Add Logger
+    logger = logging.getLogger(__name__)
+
     # Open the LinkedIn
     driver = webdriver.Chrome()
 
@@ -88,10 +92,10 @@ def main():
     job_descriptions = []
     job_functions = []
     job_industries = []
-    print(len(jobs))
+    logger.info(f"Total jobs = {len(jobs)} jobs.")
     for i, job in enumerate(jobs):
         try:
-            print(i, end="\r")
+            logger.info(f"{i} iteration")
             job.click()
             time.sleep(3)
 
@@ -123,15 +127,9 @@ def main():
             job_posts.append(html_element_handler(job_post_element))
             job_functions.append(html_element_handler(job_function_element))
             job_industries.append(html_element_handler(job_industry_element))
-            # job_description = re.sub(
-            #     "<[^>]+>", " ", html_element_handler(job_description_element)
-            # )
-            # job_description = re.sub(
-            #     "[ ]+", " ", html_element_handler(job_description_element)
-            # )
             job_descriptions.append(str(job_description_element[0]))
         except Exception as e:
-            print(f"At iteration {i} with error of {e}")
+            logger.warning(f"At iteration {i} with error of {e}")
 
     # Save it in form of Pandas DataFrame
     pd.DataFrame(
@@ -143,7 +141,10 @@ def main():
             "job_industry": job_industries,
         }
     ).to_csv(filepath, index=False)
+    logger.info("Finished Scraping.")
 
 
 if __name__ == "__main__":
+    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    logging.basicConfig(level=logging.INFO, format=log_fmt)
     main()
