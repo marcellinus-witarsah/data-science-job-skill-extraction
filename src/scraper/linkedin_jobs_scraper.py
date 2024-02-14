@@ -2,7 +2,7 @@
 Author: Marcellinus Aditya Witarsah
 Description: Used for scraping Linked In jobs search page.
 Command:
-python src/scraper/linkedin_jobs_search_scraper.py --job-title "Data Scientist" --job-location "United States" --n-jobs 25 --filepath data/raw/test.csv
+python src/scraper/linkedin_jobs_scraper.py --job-title "Data Scientist" --job-location "United States" --n-jobs 25 --filepath data/raw/test.csv
 """
 
 import time
