@@ -40,7 +40,7 @@ Install libraries and dependencies are needed by creating Python environment and
   pip install -r requirements.txt
 ```
 ## Data
-## Data Source
+## Data Columns
 The data consist of 5 columns:
  - Job Title (Plain Text)
  - Job Post (Plain Text): time since the jobs posted
@@ -49,7 +49,7 @@ The data consist of 5 columns:
  - Job Industry (Plain Text): domain industry of the company
 
 ## Data Acquisition
-The dataset that we used can are scrapped from the LinkedIn jobs search.
+The dataset that we used are scrapped from the LinkedIn jobs search.
 
 ### Data Preprocessing
 We only used the `Job Description` column and to prepare it, the following these steps:
@@ -61,11 +61,12 @@ We only used the `Job Description` column and to prepare it, the following these
 
 ### Data Annotation
 Annotate data before training the model, the annotation will be done using a [spacy annotator tool](https://tecoholic.github.io/ner-annotator/). Shout out to [tecoholic](https://github.com/tecoholic) the tool.
+
 ### Data Preparation
 Since spacy model is used, for those data that will used for training and validation must be in a [DocBin](https://spacy.io/api/docbin) format. While for testing we just need to convert it into .txt file.
 
-## About the Model
-The model is called a named entity recognition (NER) model which is specifically used for tagging named entities (data science related skills) inside texts/ documents.
+## Modelling
+The model is called a named entity recognition (NER) model which is specifically used for tagging named entities (data science related skills) inside texts/ documents. For modelling we split the data before hand so that the proportion will be 70% training set, 15% development set and 15% test set. The model learn from the training set and development set for evaluating the model performance during training.
 
 ## Evaluation & Results
 To assess the performance of our Named Entity Recognition (NER) model, we used a straightforward method for classification, which includes the following metrics:
@@ -81,4 +82,4 @@ The results of our Named Entity Recognition (NER) model are displayed in form of
 There are 3 things that will be improved from the project:
 * [ ] Perform automatic annotation by creating a dictionary of data science skills and annotated through spacy. This will save a lot a time when dealing with larger dataset.
 * [ ] Apply transfer learning in a hope to improve the model performance
-* [ ] Revise the web scraping script.  
+* [ ] Improve web scraping script so we can scrape more jobs from jobs sites.  
