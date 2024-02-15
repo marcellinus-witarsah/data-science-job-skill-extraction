@@ -1,7 +1,9 @@
 
 # Data Science Job Skill Extractor
 
-[Image]
+<p align="center">
+  <img src="reports/figures/data-science-skills.jpg" alt="Data Science Skills"/>
+</p>
 
 
 ## Background
