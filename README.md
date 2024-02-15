@@ -66,7 +66,7 @@ Annotate data before training the model, the annotation will be done using a [sp
 Since spacy model is used, for those data that will used for training and validation must be in a [DocBin](https://spacy.io/api/docbin) format. While for testing we just need to convert it into .txt file.
 
 ## Modelling
-The model is called a named entity recognition (NER) model which is specifically used for tagging named entities (data science related skills) inside texts/ documents. For modelling we split the data before hand so that the proportion will be 70% training set, 15% development set and 15% test set. The model learn from the training set and development set for evaluating the model performance during training.
+The model is called a named entity recognition (NER) model which is specifically used for tagging named entities (data science related skills) inside texts/ documents. For modelling we split the data before hand so that the proportion will be 70% training set, 15% development set and 15% test set. The model learn from the training set and development set for evaluating the model performance during training. Finally test set will be used to evaluate the final model performance.
 
 ## Evaluation & Results
 To assess the performance of our Named Entity Recognition (NER) model, we used a straightforward method for classification, which includes the following metrics:
