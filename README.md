@@ -65,7 +65,15 @@ Since spacy model is used, for those data that will used for training and valida
 ## About the Model
 The model is called a named entity recognition (NER) model which is specifically used for tagging named entities (data science related skills) inside texts/ documents.
 ## Evaluation & Results
-For evaluation, we used a simple classification evaluation method comprise of:
-- Precision: show the percentage of correct annotated skills from all skills annotated by the model
-- Recall: show the percentage of correct annotated skills from ground truth of annotated skills. 
-- F1-Score: aggregation of both Precision and Recall
+To assess the performance of our Named Entity Recognition (NER) model, we used a straightforward method for classification, which includes the following metrics:
+
+- **Precision**: This tells us the percentage of correctly identified data science skills out of all the skills identified by our NER model. In simple terms, it measures how accurate our model is when it claims to have found a skill.
+- **Recall**: This shows the percentage of correctly identified data science skills out of the total number of skills that were actually present in the text according to our annotated ground truth. In simpler terms, it measures how well our model captures all the relevant skills.
+- **F1-Score**: This is a combination of both Precision and Recall. It gives us an overall measure of the model's performance by considering both false positives and false negatives. It's a balanced way to evaluate how well our model is performing.
+## Report
+The results of our Named Entity Recognition (NER) model are displayed in form of a word cloud and a count plot in horizontal manner which can be accessed through this [Tableau Dashboard](https://public.tableau.com/app/profile/marcellinus.witarsah/viz/DataScienceJobSkillsPlatform/Frontpage).
+## Improvement
+There are 3 things that will be improved from the project:
+* [ ] Perform automatic annotation by creating a dictionary of data science skills and annotated through spacy. This will save a lot a time when dealing with larger dataset.
+* [ ] Apply transfer learning in a hope to improve the model performance
+* [ ] Revise the web scraping script.  
