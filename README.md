@@ -61,6 +61,9 @@ We only used the `Job Description` column and to prepare it, the following these
 
 ### Data Annotation
 Annotate data before training the model, the annotation will be done using a [spacy annotator tool](https://tecoholic.github.io/ner-annotator/). Shout out to [tecoholic](https://github.com/tecoholic) the tool.
+<p align="center">
+  <img src="reports/figures/ner-annotator.gif" alt="Data Science Skills"/>
+</p>
 
 ### Data Preparation
 Since spacy model is used, for those data that will used for training and validation must be in a [DocBin](https://spacy.io/api/docbin) format. While for testing we just need to convert it into .txt file.
