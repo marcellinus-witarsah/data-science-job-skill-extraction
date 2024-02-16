@@ -1,5 +1,5 @@
 
-# Data Science Job Skill Information Extraction
+# Data Science Job Skill Extraction
 
 <p align="center">
   <img src="reports/figures/data-science-skills.jpg" alt="Data Science Skills"/>
