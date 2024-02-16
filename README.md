@@ -82,7 +82,8 @@ To assess the performance of our Named Entity Recognition (NER) model, we used a
 The results of our Named Entity Recognition (NER) model are displayed in form of a word cloud and a count plot in horizontal manner which can be accessed through this [Tableau Dashboard](https://public.tableau.com/app/profile/marcellinus.witarsah/viz/DataScienceJobSkillsPlatform/Frontpage).
 
 ## Improvement
-There are 3 things that will be improved from the project:
+There are 4 things that will be improved from the project:
 * [ ] Perform automatic annotation by creating a dictionary of data science skills and annotated through spacy. This will save a lot a time when dealing with larger dataset.
 * [ ] Apply transfer learning in a hope to improve the model performance
-* [ ] Expand web scraping script utility to scrape more jobs information from other jobs sites.  
+* [ ] Expand web scraping script utility to scrape more jobs information from other jobs sites.
+* [ ] Improve documentation.
